@@ -34,17 +34,11 @@
     .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
 
-    .theme-toggle { position: relative; width: 48px; height: 24px; border-radius: 12px; background: var(--surface); cursor: pointer; border: 1px solid var(--surface-hover); }
-    .theme-toggle::before { content: ''; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, #000 50%, #fff 50%); transition: left 0.2s; }
-    [data-theme="light"] .theme-toggle::before { left: 26px; }
+    .theme-toggle { position: relative; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; overflow: hidden; border: 2px solid var(--surface-hover); }
+    .theme-toggle::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #000 50%, #fff 50%); }
+    [data-theme="light"] .theme-toggle::before { background: linear-gradient(135deg, #fff 50%, #000 50%); }
 
-    .dropdown { position: relative; }
-    .dropdown-btn { background: var(--surface); border: 1px solid var(--surface-hover); color: var(--text-dim); padding: 0.4rem 0.75rem; border-radius: 6px; font-size: 0.8rem; cursor: pointer; }
-    .dropdown-menu { display: none; position: absolute; right: 0; top: 100%; margin-top: 0.5rem; background: var(--surface); border: 1px solid var(--surface-hover); border-radius: 6px; overflow: hidden; }
-    .dropdown.open .dropdown-menu { display: block; }
-    .dropdown-menu button { display: block; width: 100%; padding: 0.6rem 1rem; background: none; border: none; color: var(--text-dim); font-size: 0.85rem; text-align: left; cursor: pointer; }
-    .dropdown-menu button:hover { background: var(--surface-hover); color: var(--text); }
-    .dropdown-menu button.active { color: var(--accent); }
+    
 
     section { padding: 8rem 0; }
     .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 4rem; }
@@ -83,14 +77,7 @@
           <li><a href="#skills">skills</a></li>
           <li><a href="#contact">contact</a></li>
         </ul>
-        <div class="dropdown" id="themeDropdown">
-          <button class="dropdown-btn" onclick="this.parentElement.classList.toggle('open')">System</button>
-          <div class="dropdown-menu">
-            <button class="active" data-value="system" onclick="setTheme('system', this)">System</button>
-            <button data-value="light" onclick="setTheme('light', this)">Light</button>
-            <button data-value="dark" onclick="setTheme('dark', this)">Dark</button>
-          </div>
-        </div>
+        <button class="theme-toggle" onclick="toggleThemeCircle()" title="Toggle theme"></button>
       </div>
     </div>
   </nav>
@@ -176,8 +163,8 @@
   </footer>
 
   <script>
-    const themes = { system: 'system', light: 'light', dark: 'dark' };
-    let currentTheme = localStorage.getItem('theme') || 'system';
+    const themes = ['system', 'light', 'dark'];
+    let currentIndex = themes.indexOf(localStorage.getItem('theme') || 'system');
 
     function getSystemTheme() {
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -188,25 +175,27 @@
       document.documentElement.setAttribute('data-theme', actual);
     }
 
-    function setTheme(theme, btn) {
-      currentTheme = theme;
+    function toggleThemeCircle() {
+      currentIndex = (currentIndex + 1) % themes.length;
+      const theme = themes[currentIndex];
       localStorage.setItem('theme', theme);
       applyTheme(theme);
-      document.querySelectorAll('.dropdown-menu button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelector('.dropdown-btn').textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
-      document.getElementById('themeDropdown').classList.remove('open');
     }
 
-    // Initialize
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-      const btn = document.querySelector(`[data-value="${saved}"]`);
-      if (btn) setTheme(saved, btn);
+    function setThemeFromSystem() {
+      const stored = localStorage.getItem('theme');
+      if (stored) {
+        currentIndex = themes.indexOf(stored);
+        if (currentIndex === -1) currentIndex = 0;
+      }
+      applyTheme(themes[currentIndex]);
     }
+
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      if (currentTheme === 'system') applyTheme('system');
+      if (themes[currentIndex] === 'system') applyTheme('system');
     });
+
+    setThemeFromSystem();
   </script>
 </body>
 </html>
