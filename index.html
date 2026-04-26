@@ -55,14 +55,13 @@
 
     .project-category { margin-bottom: 2.5rem; }
     .project-category h3 { font-size: 0.9rem; color: var(--text); margin-bottom: 1rem; font-weight: 600; }
-    .project-card { display: flex; align-items: center; gap: 1rem; background: var(--surface); padding: 1.25rem 1.5rem; border-radius: 10px; text-decoration: none; color: var(--text); transition: background 0.2s, transform 0.2s; margin-bottom: 0.75rem; }
+    .project-card { display: block; background: var(--surface); padding: 1.25rem 1.5rem; border-radius: 10px; text-decoration: none; color: var(--text); transition: background 0.2s, transform 0.2s; margin-bottom: 0.75rem; }
     .project-card:hover { background: var(--surface-hover); transform: translateX(6px); }
     .project-card.no-link { cursor: default; }
     .project-card.no-link:hover { background: var(--surface); transform: none; }
-    .project-card-icon { width: 42px; height: 42px; border-radius: 8px; background: var(--surface-hover); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.75rem; color: var(--accent); flex-shrink: 0; }
-    .project-card-content h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.25rem; }
-    .project-card-content p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.4; }
-    .project-card .lang { color: var(--accent); font-size: 0.7rem; font-weight: 600; margin-left: auto; align-self: flex-start; }
+    .project-card h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.25rem; }
+    .project-card p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.4; }
+    .project-card .lang { color: var(--accent); font-size: 0.7rem; font-weight: 600; margin-left: 0.5rem; }
     .project-card.no-link .lang { color: var(--text-dim); font-style: italic; }
 
     .skills-list { display: flex; flex-wrap: wrap; gap: 0.6rem; }
@@ -70,9 +69,9 @@
     .skill-tag:hover { background: var(--surface-hover); }
 
     .links { display: flex; gap: 1.75rem; flex-wrap: wrap; }
-    .links a { color: var(--text-dim); text-decoration: none; font-size: 1rem; font-weight: 500; transition: color 0.2s; display: flex; align-items: center; gap: 0.5rem; }
+    .links a { color: var(--text-dim); text-decoration: none; font-size: 1rem; font-weight: 500; transition: color 0.2s; }
     .links a:hover { color: var(--accent); }
-    .links .icon { width: 18px; height: 18px; }
+    .links span { color: var(--text-dim); font-size: 1rem; }
 
     footer { padding: 4rem 0 2rem; border-top: 1px solid var(--surface); color: var(--text-dim); font-size: 0.85rem; }
     footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
@@ -118,60 +117,36 @@
       <div class="project-category">
         <h3>Swift</h3>
         <a href="https://github.com/mythicsorcerer/Project-Hydra" target="_blank" class="project-card">
-          <div class="project-card-icon">HYD</div>
-          <div class="project-card-content">
-            <h4>Project Hydra</h4>
-            <p>A platformer game built with Swift and SpriteKit.</p>
-          </div>
-          <span class="lang">Swift</span>
+          <h4>Project Hydra <span class="lang">Swift</span></h4>
+          <p>A platformer game built with Swift and SpriteKit.</p>
         </a>
         <a href="https://github.com/mythicsorcerer/azox-macros" target="_blank" class="project-card">
-          <div class="project-card-icon">AZM</div>
-          <div class="project-card-content">
-            <h4>azox-macros</h4>
-            <p>Free and open-source autoclicker and macro automation tool for macOS.</p>
-          </div>
-          <span class="lang">Swift</span>
+          <h4>azox-macros <span class="lang">Swift</span></h4>
+          <p>Free and open-source autoclicker and macro automation tool for macOS.</p>
         </a>
         <a href="#" class="project-card no-link">
-          <div class="project-card-icon">BKS</div>
-          <div class="project-card-content">
-            <h4>Booksorter</h4>
-            <p>Book management and organization tool.</p>
-          </div>
-          <span class="lang">WIP</span>
+          <h4>Booksorter <span class="lang">WIP</span></h4>
+          <p>Book management and organization tool.</p>
         </a>
       </div>
 
       <div class="project-category">
         <h3>Minecraft / Java</h3>
         <a href="https://github.com/mythicsorcerer/azox-cmd" target="_blank" class="project-card">
-          <div class="project-card-icon">AZC</div>
-          <div class="project-card-content">
-            <h4>azox-cmd</h4>
-            <p>A Minecraft plugin combining useful features from major mods.</p>
-          </div>
-          <span class="lang">Java</span>
+          <h4>azox-cmd <span class="lang">Java</span></h4>
+          <p>A Minecraft plugin combining useful features from major mods.</p>
         </a>
         <a href="https://github.com/mythicsorcerer/AI-MC-hotloader" target="_blank" class="project-card">
-          <div class="project-card-icon">AIM</div>
-          <div class="project-card-content">
-            <h4>AI-MC-Hotloader</h4>
-            <p>Hot-reloading plugin template with AI integration.</p>
-          </div>
-          <span class="lang">Java</span>
+          <h4>AI-MC-Hotloader <span class="lang">Java</span></h4>
+          <p>Hot-reloading plugin template with AI integration.</p>
         </a>
       </div>
 
       <div class="project-category">
         <h3>Web</h3>
         <a href="https://github.com/mythicsorcerer/azox-www" target="_blank" class="project-card">
-          <div class="project-card-icon">WWW</div>
-          <div class="project-card-content">
-            <h4>azox-www</h4>
-            <p>Personal website and web projects.</p>
-          </div>
-          <span class="lang">PHP</span>
+          <h4>azox-www <span class="lang">PHP</span></h4>
+          <p>Personal website and web projects.</p>
         </a>
       </div>
     </div>
@@ -198,18 +173,10 @@
     <div class="container">
       <h2 class="section-label">Connect</h2>
       <div class="links">
-        <a href="https://github.com/mythicsorcerer" target="_blank">
-          <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795 1.125-.015 1.92.86 2.19 1.23.765 1.23 1.86 1.23 1.86 1.23 1.515-.015 2.28-.87 2.58-1.51.15-.375.6-1.23.75-1.51.075-.315.24-.81.285-.81.15.015.285.195.285.195.21.255.66.81.9.81.63 0 1.08-.555 1.08-1.23 0-.63-.285-1.23-.75-1.695-.375-.375-.855-1.2-.285-2.355.285-.345.87-1.23.285-2.355 0 0 .645-.195 1.8.87.555-.15 1.155-.225 1.755-.225 1.155 0 2.355.195 3.195 1.53.555-.285 1.245-.3 1.815-.3.57 0 1.26.015 1.815.3.84-1.335 2.04-1.53 3.195-1.53.6 0 1.2.075 1.755.225 1.155-1.065 1.8-.87 1.8-.87-.57 1.125-.66 2.01-.285 2.355.42.465.435 1.065.285 1.695-.195.45-.66 1.095-.66 1.23 0 .675.45 1.215 1.08 1.215.24 0 .69-.315.9-.81.135-.015.285-.195.285-.195.135.195.285.285.285.285.21.195.525.285.825.285.27 0 .555-.045.81-.135.45-.165.87-.555 1.17-.945.015.015.045.045.045.045.105.285.06.555.045.81 0 0-.225.165-.645.135"/></svg>
-          GitHub
-        </a>
-        <a href="https://modrinth.com/user/mythicsorcerer" target="_blank">
-          <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M2.65 15.58c.38-.89 1.26-1.52 2.3-1.52h8.94l.06-3.72H10.2l-1.77-4.2c-.33-.78.12-1.64.96-1.84h3.24c.72 0 1.34.48 1.56 1.17l1.38 4.59h2.94c1.1 0 1.95.97 1.71 2.01l-2.01 8.76c-.21.92-.99 1.59-1.92 1.59H5.96c-.96 0-1.75-.63-2.03-1.52l-.28-.82z"/></svg>
-          Modrinth
-        </a>
-        <a href="mailto:mythicsorcerer@gmail.com">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-          Email
-        </a>
+        <a href="mailto:mythicsorcerer@gmail.com">Email</a>
+        <a href="https://github.com/mythicsorcerer" target="_blank">GitHub</a>
+        <a href="https://modrinth.com/user/mythicsorcerer" target="_blank">Modrinth</a>
+        <span>Discord: mythic_sorcerer</span>
       </div>
     </div>
   </section>
